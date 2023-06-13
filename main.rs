@@ -6,11 +6,14 @@ mod tree_3cols;
 use crate::tree_3cols::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
+mod linked_list;
+use crate::linked_list::Head;
 fn main() {
     println!("enter bs for binary search of an element in the stored array");
     println!("enter fib for getting the nth fibonacci number");
     println!("enter ms for performing merge sort on the user inputed array");
     println!("enter tt for entering tree table");
+    println!("enter ll fo entering linked list");
     let mut ans = String::new();
     io::stdin()
         .read_line(&mut ans)
@@ -63,10 +66,12 @@ fn main() {
         let arr2: (String, String, f64) = ("david".to_string(), "ramya".to_string(), 32000.00);
         let arr3: (String, String, f64) = ("rajesh".to_string(), "shankar".to_string(), 60000.00);
         let arr4: (String, String, f64) = ("shankar".to_string(), "siva".to_string(), 100000.00);
+        let arr5: (String, String, f64) = ("aditya".to_string(), "siva".to_string(), 100000.00);
         root = tree_3cols::add_row(arr1, root);
         root = tree_3cols::add_row(arr2, root);
         root= tree_3cols::add_row(arr3, root);
         root= tree_3cols::add_row(arr4, root);
+        root = tree_3cols::add_row(arr5, root);
         println!("{:25}|{:25}|{:25}", " Employee Name".to_string(),"Reporting Manager Name".to_string(), "Salary".to_string());
         tree_3cols::printt(&root);
         println!("");
@@ -78,8 +83,19 @@ fn main() {
         //println!("{}&{}",t.name,s.children.len());
         println!("deleted the tree");
         tree_3cols::printt(&root);
-    } else {
+    }
+    else if ans=="ll"{
+        let mut head=Head::new();
+        //let mut h=&head;
+        head=linked_list::add_val(head,3);
+        head=linked_list::add_val(head,6);
+        linked_list::print_val(&head.head);
+        head=linked_list::pop(head);
+        linked_list::print_val(&head.head);
+     }
+    else {
         println!("invalid entry");
         //practice
     }
 }
+
